@@ -1,0 +1,18 @@
+version: "3"
+
+services: 
+  api:
+    build: ./irregularverbs.api
+
+  admin:
+    build: ./irregularverbs.admin
+
+  mongodb:
+    image: mongo:4.0.12-xenial
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+  
+volumes: 
+  mongodb:

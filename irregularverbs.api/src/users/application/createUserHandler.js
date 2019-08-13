@@ -4,7 +4,7 @@ const ValidationError = require('../../shared/infraestructure/ValidationError');
 module.exports = async ({ params, userRepository, userValidator, encrypter }) => {
   try {
     // le va a pasar la implementacion del repositorio
-    const createUser = createUserBuilder({ userRepository, encrypter});
+    const createUser = createUserBuilder({ userRepository, encrypter });
 
     const isValid = await userValidator(params);
 
@@ -19,4 +19,4 @@ module.exports = async ({ params, userRepository, userValidator, encrypter }) =>
   } catch (error) {
     throw error;
   }
-}
+};

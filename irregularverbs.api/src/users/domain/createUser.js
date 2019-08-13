@@ -1,9 +1,6 @@
 const UserDomainError = require('./UserDomainError');
 
-module.exports = ({
-  userRepository,
-  encrypter,
-}) => async ({name, lastname, email, password}) => {
+module.exports = ({ userRepository, encrypter }) => async ({ name, lastname, email, password }) => {
   try {
     if (!userRepository) {
       throw new UserDomainError(UserDomainError.MESSAGES_ERRORS.REPO_NOT_FOUND);
