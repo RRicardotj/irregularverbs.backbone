@@ -6,7 +6,8 @@ router.get('/', (req, res) => {
   return res.json({ message: 'Api server is up' });
 });
 
-router.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
+router.use((err, req, res, next) => {
   res.handleReject(err);
 });
 

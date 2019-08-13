@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
 
 router.use('/user', require('./users/infraestructure/UserExpressFakeRouter'));
 
-router.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
+router.use((err, req, res, next) => {
   res.handleReject(err);
 });
 

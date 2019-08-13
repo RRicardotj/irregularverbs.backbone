@@ -1,11 +1,12 @@
 require('dotenv').config();
 require('./config');
+const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
 // const jwtAuth = require('./middlewares/jwtAuth');
 
 const app = express();
-const server = require('http').Server(app);
+const server = http.Server(app);
 
 app.use(
   bodyParser.urlencoded({
@@ -29,6 +30,6 @@ app.use(require('./src/routes'));
 app.use('/test', require('./src/routesTests'));
 // app.use(require('./middlewares/logger'));
 
-const port = process.env.SERVER_PORT || 8080
+const port = process.env.SERVER_PORT || 8080;
 server.listen(port);
 console.log(`Listening on port ${port}`); // eslint-disable-line
