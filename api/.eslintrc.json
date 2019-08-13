@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "plugin:prettier/recommended",
+    "plugin:jest/recommended"
+  ],
+
+  "plugins": ["jest"],
+
+  "env": {
+    "node": true,
+    "jest/globals": true
+  },
+
+  "parserOptions": {
+    "node": true,
+    "sourceType": "module"
+  },
+
+  "rules": {
+    "prettier/prettier": "error",
+
+    "no-loop-func": "off",
+    "no-await-in-loop": "off",
+    "no-restricted-syntax": "off",
+
+    "linebreak-style": "off",
+    "class-methods-use-this": "off",
+
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "newlines-between": "ignore"
+      }
+    ]
+  }
+}
