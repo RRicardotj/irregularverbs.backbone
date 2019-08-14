@@ -4,7 +4,7 @@ class ValidationError extends Error {
     this.name = this.constructor.name;
     this.fields = fields;
   }
-};
+}
 
 ValidationError.ERROR_MESSAGES = {
   FIELD_FAILS: 'Fields validation fails',
