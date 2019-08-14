@@ -21,7 +21,5 @@ test('Create user Domain test', async () => {
   expect(user.lastname).toBe(data.lastname);
   expect(user.id).toBeDefined();
 
-  user.removePassword();
-
   expect(user.password).toBeUndefined();
 });
