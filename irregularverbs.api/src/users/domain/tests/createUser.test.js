@@ -16,6 +16,7 @@ test('Create user Domain test', async () => {
 
   const user = await createUser(data);
 
+  expect(user).toBeDefined();
   expect(user.email).toBe(data.email);
   expect(user.name).toBe(data.name);
   expect(user.lastname).toBe(data.lastname);
