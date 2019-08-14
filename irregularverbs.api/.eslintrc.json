@@ -24,6 +24,7 @@
     "no-loop-func": "off",
     "no-await-in-loop": "off",
     "no-restricted-syntax": "off",
+    "global-require": "off",
 
     "linebreak-style": "off",
     "class-methods-use-this": "off",

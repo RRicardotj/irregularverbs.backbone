@@ -19,11 +19,9 @@ router.post(
         passwordConfirm: req.body.passwordConfirm,
       };
 
-      const userRepository = new UserFakeRepository();
-
       const response = await createUserHandler({
         params,
-        userRepository,
+        UserRepository: UserFakeRepository,
         userValidator,
         encrypter,
       });

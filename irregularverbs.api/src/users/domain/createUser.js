@@ -1,4 +1,5 @@
 const UserDomainError = require('./UserDomainError');
+const { User } = require('./Entities');
 
 module.exports = ({ userRepository, encrypter }) => async ({ name, lastname, email, password }) => {
   try {
@@ -12,7 +13,11 @@ module.exports = ({ userRepository, encrypter }) => async ({ name, lastname, ema
 
     const passwordEncrypted = encrypter.encrypt(password);
 
-    const result = await userRepository.create({ name, lastname, email, passwordEncrypted });
+    const user = new User({ name, lastname, email, password: passwordEncrypted });
+
+    const result = await userRepository.create(user);
+
+    result.removePassword();
 
     return result;
   } catch (error) {

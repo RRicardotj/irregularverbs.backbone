@@ -3,7 +3,7 @@ class UserDomainError extends Error {
     super(message);
     this.name = this.constructor.name;
   }
-};
+}
 
 UserDomainError.MESSAGES_ERRORS = {
   REPO_NOT_FOUND: 'User repository is need it',
