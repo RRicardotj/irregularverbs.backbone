@@ -15,9 +15,6 @@ services:
       - ./irregularverbs.api:/node/app
       - /node/app/node_modules
 
-  admin:
-    build: ./irregularverbs.admin
-
   mongodb:
     image: mongo:4.0.12-xenial
     restart: always
