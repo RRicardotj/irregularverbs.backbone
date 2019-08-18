@@ -24,8 +24,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use(jwtAuth);
-
 app.use(require('./src/routes'));
 app.use('/test', require('./src/routesTests'));
 // app.use(require('./middlewares/logger'));
