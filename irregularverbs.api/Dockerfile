@@ -2,6 +2,8 @@ FROM node:10.16-alpine as base
 EXPOSE 3000
 ENV NODE_ENV=production
 
+RUN apk add --no-cache python
+
 WORKDIR /node
 COPY package.json package-lock*.json* yarn.lock* ./
 
