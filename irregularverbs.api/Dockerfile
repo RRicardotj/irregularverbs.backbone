@@ -15,6 +15,7 @@ ENV NODE_ENV=development
 ENV PATH=/node/node_modules/.bin:$PATH
 WORKDIR /node
 RUN npm install --only=development
+WORKDIR /node/app
 CMD ["nodemon", "server.js"]
 
 #stage 3 (production)
