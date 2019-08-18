@@ -30,6 +30,6 @@ app.use(require('./src/routes'));
 app.use('/test', require('./src/routesTests'));
 // app.use(require('./middlewares/logger'));
 
-const port = process.env.SERVER_PORT || 8080;
+const port = process.env.SERVER_PORT || 3000;
 server.listen(port);
 console.log(`Listening on port ${port}`); // eslint-disable-line

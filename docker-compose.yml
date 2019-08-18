@@ -1,8 +1,19 @@
-version: "3"
+version: "2.4"
 
 services: 
   api:
-    build: ./irregularverbs.api
+    build:
+      context: ./irregularverbs.api
+      target: dev
+    ports: 
+      - "8080:8080"
+    environment: 
+      - SERVER_PORT=8080
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+    volumes:
+      - ./irregularverbs.api:/node/app
+      - /node/app/node_modules
 
   admin:
     build: ./irregularverbs.admin
@@ -11,8 +22,8 @@ services:
     image: mongo:4.0.12-xenial
     restart: always
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
     volumes: 
       mongodb:/data/db
   
