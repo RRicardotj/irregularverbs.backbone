@@ -1,10 +1,15 @@
-const { Schema, model } = require('../mongooseConnection');
+/**
+ * @param {import('mongoose')} connection
+ * @returns {import('mongoose').model}
+ */
+module.exports = (connection) => {
+  const { Schema, model } = connection;
+  const VerbSchema = new Schema({
+    spanish: String,
+    infinitive: String,
+    preterit: String,
+    pastParticipe: String,
+  });
 
-const VerbSchema = new Schema({
-  spanish: String,
-  infinitive: String,
-  preterit: String,
-  pastParticipe: String,
-});
-
-module.exports = model('Verb', VerbSchema);
+  return model('Verb', VerbSchema);
+};

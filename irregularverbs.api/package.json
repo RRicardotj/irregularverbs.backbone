@@ -9,7 +9,7 @@
     "start": "node server.js",
     "lint": "eslint .",
     "prettier": "prettier --write \"**/*.{js,json}\"",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",

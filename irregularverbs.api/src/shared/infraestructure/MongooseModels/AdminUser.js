@@ -1,10 +1,15 @@
-const { Schema, model } = require('../mongooseConnection');
+/**
+ * @param {import('mongoose')} connection
+ * @returns {import('mongoose').model}
+ */
+module.exports = (connection) => {
+  const { Schema, model } = connection;
+  const AdminUserSchema = new Schema({
+    name: String,
+    lastname: String,
+    email: String,
+    password: String,
+  });
 
-const AdminUserSchema = new Schema({
-  name: String,
-  lastname: String,
-  email: String,
-  password: String,
-});
-
-module.exports = model('AdminUser', AdminUserSchema);
+  return model('AdminUser', AdminUserSchema);
+};

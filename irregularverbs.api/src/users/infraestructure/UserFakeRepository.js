@@ -1,13 +1,13 @@
 const randomstring = require('randomstring');
+const { User } = require('../domain/Entities');
 
 class UserFakeRepository {
-  constructor(Entity) {
+  constructor() {
     this.users = [];
-    this.Entity = Entity;
   }
 
   async create(user) {
-    const newUser = new this.Entity(user);
+    const newUser = new User(user);
     console.log('Creating user in a fake repository');
     const id = randomstring.generate(9);
 
@@ -26,7 +26,7 @@ class UserFakeRepository {
   async getByPk(id) {
     const result = this.users.find((item) => item.id === id);
 
-    const user = new this.Entity(result);
+    const user = new User(result);
 
     // user.removePassword();
 

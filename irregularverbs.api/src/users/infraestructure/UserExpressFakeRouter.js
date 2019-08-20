@@ -21,7 +21,7 @@ router.post(
 
       const response = await createUserHandler({
         params,
-        UserRepository: UserFakeRepository,
+        userRepository: new UserFakeRepository(),
         userValidator,
         encrypter,
       });

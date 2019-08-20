@@ -1,10 +1,9 @@
 const { createUserBuilder } = require('../');
-const { User } = require('../Entities');
 const UserFakeRepository = require('../../infraestructure/UserFakeRepository');
 const encrypter = require('../../infraestructure/encrypter');
 
 test('Create user Domain test', async () => {
-  const userRepository = new UserFakeRepository(User);
+  const userRepository = new UserFakeRepository();
   const createUser = createUserBuilder({ userRepository, encrypter });
 
   const data = {
