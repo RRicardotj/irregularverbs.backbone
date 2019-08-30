@@ -7,7 +7,14 @@ module.exports = async ({ params, userRepository, userValidator, encrypter }) =>
     // le va a pasar la implementacion del repositorio
     const createUser = createUserBuilder({ userRepository, encrypter });
 
-    const isValid = await userValidator(params);
+    const rules = {
+      name: 'required',
+      lastname: 'required',
+      email: 'required',
+      password: 'required|confirmed',
+    };
+
+    const isValid = await userValidator(params, rules);
 
     if (!isValid.result) {
       throw new ValidationError(ValidationError.ERROR_MESSAGES.FIELD_FAILS, isValid.fields);
