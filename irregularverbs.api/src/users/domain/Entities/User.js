@@ -8,12 +8,10 @@ class User {
   }
 
   setId(id) {
-    console.log('seting id');
     this.id = id;
   }
 
   removePassword() {
-    console.log('Deleting password');
     delete this.password;
   }
 }

@@ -8,7 +8,6 @@ class UserFakeRepository {
 
   async create(user) {
     const newUser = new User(user);
-    console.log('Creating user in a fake repository');
     const id = randomstring.generate(9);
 
     newUser.setId(id);
@@ -19,7 +18,6 @@ class UserFakeRepository {
   }
 
   async getUsers() {
-    console.log('geting users in a fake repository');
     return this.users;
   }
 
@@ -27,8 +25,6 @@ class UserFakeRepository {
     const result = this.users.find((item) => item.id === id);
 
     const user = new User(result);
-
-    // user.removePassword();
 
     return user;
   }

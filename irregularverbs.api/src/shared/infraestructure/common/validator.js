@@ -5,8 +5,8 @@ const moment = require('moment');
 
 function getDefaultMessages() {
   return {
-    required: 'Campo requerido',
-    regex: 'Formato inválido',
+    required: 'Field required',
+    regex: 'Invalid Format',
   };
 }
 
@@ -23,7 +23,7 @@ function isDateValid(date, format) {
 Validator.isDateValid = isDateValid;
 
 // Configuration
-Validator.useLang('es');
+Validator.useLang('en');
 
 Validator.register(
   'isBefore',
