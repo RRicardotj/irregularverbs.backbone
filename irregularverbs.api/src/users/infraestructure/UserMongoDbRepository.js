@@ -31,6 +31,14 @@ class UserMongoDbRepository {
     return new User(user);
   }
 
+  async getByField(field, value) {
+    const result = this.users.find((item) => item[field] === value);
+
+    const user = new User(result);
+
+    return user;
+  }
+
   async deleteById(id) {
     await this.UserModel.deleteOne({ _id: id });
   }

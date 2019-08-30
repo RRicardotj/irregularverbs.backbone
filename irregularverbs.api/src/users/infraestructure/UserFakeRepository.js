@@ -28,6 +28,23 @@ class UserFakeRepository {
 
     return user;
   }
+
+  async getByField(field, value) {
+    const result = this.users.find((item) => item[field] === value);
+
+    const user = new User(result);
+
+    return user;
+  }
+
+  async deleteById(id) {
+    const results = this.users.filter((item) => item.id !== id);
+    this.users = results;
+  }
+
+  async deleteAll() {
+    this.users = [];
+  }
 }
 
 module.exports = UserFakeRepository;
