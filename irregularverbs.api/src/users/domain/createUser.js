@@ -1,7 +1,10 @@
 const UserDomainError = require('./UserDomainError');
 const { User } = require('./Entities');
 
-module.exports = ({ userRepository, encrypter }) => async ({ name, lastname, email, password }) => {
+module.exports = ({ userRepository, encrypter }) => async (
+  { name, lastname, email, password },
+  { hidePassword } = { hidePassword: true },
+) => {
   try {
     if (!userRepository) {
       throw new UserDomainError(UserDomainError.MESSAGES_ERRORS.REPO_NOT_FOUND);
@@ -17,7 +20,9 @@ module.exports = ({ userRepository, encrypter }) => async ({ name, lastname, ema
 
     const result = await userRepository.create(user);
 
-    result.removePassword();
+    if (hidePassword) {
+      result.removePassword();
+    }
 
     return result;
   } catch (error) {

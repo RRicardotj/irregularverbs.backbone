@@ -4,13 +4,17 @@ const UserMongoDbRepository = require('../UserMongoDbRepository');
 const repository = new UserMongoDbRepository(connection);
 const { User } = require('../../domain/Entities');
 
-const userTest = (expected, user) => {
+const userTest = (expected, user, { withId } = {}) => {
   expect(expected).toBeDefined();
   expect(expected.email).toBe(user.email);
   expect(expected.name).toBe(user.name);
   expect(expected.lastname).toBe(user.lastname);
   expect(expected.password).toBe(user.password);
   expect(expected.id).toBeDefined();
+
+  if (withId) {
+    expect(expected.id).toBe(user.id);
+  }
 };
 
 describe('Testing UserMongoDbRepository > create', () => {
@@ -71,13 +75,13 @@ describe('Testing UserMongoDbRepository > getting users', () => {
   test('get all users', async () => {
     const users = await repository.getUsers();
 
-    expect(users).toHaveLength(3);
+    expect(users).toHaveLength(usersCreated.length);
 
     for (let i = 0; i < users.length; i += 1) {
       const user = users[i];
       const userSaved = usersCreated[i];
 
-      userTest(userSaved, user);
+      userTest(userSaved, user, { withId: true });
     }
   });
 
@@ -86,7 +90,31 @@ describe('Testing UserMongoDbRepository > getting users', () => {
 
     const userFound = await repository.getByPk(userToFound.id);
 
-    userTest(userToFound, userFound);
+    userTest(userToFound, userFound, { withId: true });
+  });
+
+  test('getting a user by field > email', async () => {
+    const userToFound = usersCreated[0];
+
+    const userFound = await repository.getByField('email', userToFound.email);
+
+    userTest(userToFound, userFound, { withId: true });
+  });
+
+  test('getting a user by field > name', async () => {
+    const userToFound = usersCreated[1];
+
+    const userFound = await repository.getByField('name', userToFound.name);
+
+    userTest(userToFound, userFound, { withId: true });
+  });
+
+  test('getting a user by field > lastname', async () => {
+    const userToFound = usersCreated[2];
+
+    const userFound = await repository.getByField('lastname', userToFound.lastname);
+
+    userTest(userToFound, userFound, { withId: true });
   });
 
   afterAll(async () => {
